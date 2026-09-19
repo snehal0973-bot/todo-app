@@ -1,0 +1,30 @@
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+const taskList = document.getElementById("taskList");
+const taskInput = document.getElementById("taskInput");
+
+function save(){ localStorage.setItem("tasks", JSON.stringify(tasks)); }
+function render(){
+  taskList.innerHTML = "";
+  tasks.forEach((t,i)=>{
+    const li = document.createElement("li");
+    if(t.completed) li.classList.add("completed");
+    li.innerHTML = `<span onclick="toggle(${i})">${t.text}</span>
+    <div class="actions">
+      <button class="edit" onclick="editTask(${i})">Edit</button>
+      <button class="del" onclick="deleteTask(${i})">Delete</button>
+    </div>`;
+    taskList.appendChild(li);
+  });
+}
+function addTask(){
+  if(!taskInput.value.trim()) return;
+  tasks.push({text: taskInput.value, completed:false});
+  taskInput.value=""; save(); render();
+}
+function deleteTask(i){ tasks.splice(i,1); save(); render(); }
+function toggle(i){ tasks[i].completed =!tasks[i].completed; save(); render(); }
+function editTask(i){
+  const newText = prompt("Edit task:", tasks[i].text);
+  if(newText) { tasks[i].text = newText; save(); render(); }
+}
+render();

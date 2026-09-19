@@ -1,0 +1,12 @@
+body{font-family: Arial; background:#f0f2f5; display:flex; justify-content:center; padding-top:50px;}
+.container{background:white; width:400px; padding:25px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.1);}
+h1{text-align:center;}
+.input-box{display:flex; gap:10px; margin-bottom:20px;}
+input{flex:1; padding:10px; border:1px solid #ddd; border-radius:8px;}
+button{padding:10px 15px; border:none; background:#4f46e5; color:white; border-radius:8px; cursor:pointer;}
+ul{list-style:none; padding:0;}
+li{display:flex; justify-content:space-between; align-items:center; background:#f9fafb; padding:10px; margin-bottom:8px; border-radius:8px;}
+li.completed span{text-decoration:line-through; color:gray;}
+.actions button{margin-left:5px; font-size:12px; padding:5px 8px;}
+.actions.del{background:#ef4444;}.actions.edit{background:#10b981;}
+
